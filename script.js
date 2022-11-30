@@ -1,36 +1,47 @@
-while(true){
-    jogador1 = prompt("Jogador 1: Digite pedra, papel ou tesoura");
-    jogador2 = prompt("Jogador 2: Digite pedra, papel ou tesoura");
 
-if (jogador1 == "pedra") {
-     if (jogador2 == "tesoura") {
-        alert ("Pedra quebra tesoura");
-    } else if (jogador2 == "papel"){
-        alert ("Papel envolve a Pedra");
-    } else if (jogador2 == "pedra") {
-        alert ("Empate");
+
+
+var userChoice = prompt("Do you choose rock, paper or scissors?");
+var computerChoice = Math.random();
+
+if (computerChoice < 0.34) {
+    computerChoice = "rock";
+    } else if(computerChoice <= 0.67) {
+    computerChoice = "paper";
+    } else {
+    computerChoice = "scissors";
+}
+
+var compare = function(choice1, choice2) {
+    if(choice1 === choice2) {
+    return "The result is a tie!";
+}
+if(choice1 === "rock") {
+    if(choice2 === "scissors") {
+        return "rock wins";
+    } else {
+        return "paper wins";
     }
-
 }
- else if (jogador1 == "tesoura") {
-    if (jogador2 == "pedra") {
-        alert ("Pedra quebra tesoura");
-    } else if (jogador2 == papel){
-        alert ("tesoura corta papel");
-    } else if (jogadoe2 == "tesoura") {
-        alert ("Empate");
+if(choice1 === "paper") {
+    if(choice2 === "rock") {
+        return "paper wins";
+    } else {
+        if(choice2 === "scissors") {
+            return "scissors wins";
     }
 }
-
- else if (jogador1 == "papel"){
-    if (jogador2 == "pedra") {
-        alert ("Papel envolve pedra");
-    }else if (jogador2 == tesoura) {
-        alert ("Tesoura corta papel");
-    }else if (jogador2 == "papel")  {
-        alert ("Empate");
+if(choice1 === "scissors") {
+    if(choice2 === "rock") {
+        return "rock wins";
+    } else {
+        if(choice2 === "paper") {
+            return "scissors wins";
+        }
     }
-
 }
-
 }
+};
+console.log("User Choice: " + userChoice);
+console.log("Computer Choice: " + computerChoice);
+compare(userChoice, computerChoice);
