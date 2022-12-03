@@ -1,47 +1,44 @@
+function computerPlay() {
+    let computerChoise = ["Rock", "Paper", "Scissor"];
+    return computerChoise[Math.floor(Math.random() * computerChoise.length)]
+  }
 
+function playRound(playerSelection, computerSelection) {
+    if ((playerSelection.toUpperCase() === "ROCK") && (computerSelection === "Paper")) {
+      return ("Oh no! Paper covers Rock! You lost!");
+    } else if ((playerSelection.toUpperCase() === "ROCK") && (computerSelection === "Rock")) {
+      return ("Two heads thinking alike. It's a tie.");
+    } else if ((playerSelection.toUpperCase() === "ROCK") && (computerSelection === "Scissor")) {
+      return ("Great choice! Rock crushes Scissor! You won!");
+    }
 
-
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-var computerChoice = Math.random();
-
-if (computerChoice < 0.34) {
-    computerChoice = "rock";
-    } else if(computerChoice <= 0.67) {
-    computerChoice = "paper";
-    } else {
-    computerChoice = "scissors";
-}
-
-var compare = function(choice1, choice2) {
-    if(choice1 === choice2) {
-    return "The result is a tie!";
-}
-if(choice1 === "rock") {
-    if(choice2 === "scissors") {
-        return "rock wins";
-    } else {
-        return "paper wins";
+    if ((playerSelection.toUpperCase() === "SCISSOR") && (computerSelection === "Rock")) {
+      return ("Oh no! Rock crushes Scissor! You lost!");
+    } else if ((playerSelection.toUpperCase() === "SCISSOR") && (computerSelection === "Scissor")) {
+      return ("Two heads thinking alike. It's a tie.");
+    } else if ((playerSelection.toUpperCase() === "SCISSOR") && (computerSelection === "Paper")) {
+      return ("Great choice! Scissor cuts Paper! You won!");
+      
+    }if ((playerSelection.toUpperCase() === "PAPER") && (computerSelection === "Scissor")) {
+      return ("Oh no! Scissor cuts Paper! You lost!");
+    } else if ((playerSelection.toUpperCase() === "PAPER") && (computerSelection === "Paper")) {
+      return ("Two heads thinking alike. It's a tie.");
+    } else if ((playerSelection.toUpperCase() === "PAPER") && (computerSelection === "Rock")) {
+      return ("Great choice! Paper covers Rock! You won!")
     }
 }
-if(choice1 === "paper") {
-    if(choice2 === "rock") {
-        return "paper wins";
-    } else {
-        if(choice2 === "scissors") {
-            return "scissors wins";
+
+alert("Hello! Let's have some fun! This is a simple game of 5 rounds of 'Rock, Paper or Scissor'." )
+
+let playerSelection = prompt("What's your choice? Rock, Paper or Scissor?");
+let computerSelection = computerPlay();
+
+console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound(i)        
     }
+    console.log("Let's Play again?");
 }
-if(choice1 === "scissors") {
-    if(choice2 === "rock") {
-        return "rock wins";
-    } else {
-        if(choice2 === "paper") {
-            return "scissors wins";
-        }
-    }
-}
-}
-};
-console.log("User Choice: " + userChoice);
-console.log("Computer Choice: " + computerChoice);
-compare(userChoice, computerChoice);
+
