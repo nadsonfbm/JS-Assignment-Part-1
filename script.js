@@ -34,8 +34,8 @@ alert("Hello! Let's have some fun! This is a simple game of 5 rounds of 'Rock, P
 function playerSelection() {
     do {
         let userInput = prompt("What's your choice? rock, paper or scissor?").toLocaleLowerCase().trim();
-        
-    } while (!arr.includes);
+    } while (!arr.includes(userInput))
+    return userInput
     
 }
 let playerSelection = prompt("What's your choice? Rock, Paper or Scissor?");
