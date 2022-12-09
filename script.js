@@ -1,32 +1,34 @@
 let playersWins = 0;
 let computersWins = 0;
+let computerChoiseArr = ["rock", "paper", "scissor"];
 
 function computerPlay() {
-    let computerChoise = ["Rock", "Paper", "Scissor"];
-    return computerChoise[Math.floor(Math.random() * computerChoise.length)];
+    let computerSelection = [""];
+    let computerChoise = Math.floor(Math.random()*3);
+    return computerSelection[""] = computerChoiseArr[computerChoise];
   }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "ROCK" && computerSelection === "Paper") {
-        console.log("Oh no! Paper covers Rock! You lost!");
+    if (playerSelection === "rock" && computerSelection === "paper") {
+        console.log("Oh no! Paper covers Rock! You lost the round!");
         computersWins = computersWins + 1;
-    } else if (playerSelection === "ROCK" && computerSelection === "Scissor") {
-        console.log ("Great choice! Rock crushes Scissor! You won!");
+    } else if (playerSelection === "rock" && computerSelection === "scissor") {
+        console.log ("Great choice! Rock crushes Scissor! You won the round!");
         playersWins = playersWins + 1;
-    } else if (playerSelection === "SCISSOR" && computerSelection === "Rock") {
-        console.log ("Oh no! Rock crushes Scissor! You lost!");
+    } else if (playerSelection === "scissor" && computerSelection === "rock") {
+        console.log ("Oh no! Rock crushes Scissor! You lost the round!");
         computersWins = computersWins + 1;
-    } else if (playerSelection === "SCISSOR" && computerSelection === "Paper") {
-        console.log ("Great choice! Scissor cuts Paper! You won!");
+    } else if (playerSelection === "scissor" && computerSelection === "paper") {
+        console.log ("Great choice! Scissor cuts Paper! You won the round!");
         playersWins = playersWins + 1;
-    } else if (playerSelection === "PAPER" && computerSelection === "Scissor") {
-        console.log ("Oh no! Scissor cuts Paper! You lost!");
+    } else if (playerSelection === "paper" && computerSelection === "scissor") {
+        console.log ("Oh no! Scissor cuts Paper! You lost the round!");
         computersWins = computersWins + 1;
-    } else if (playerSelection === "PAPER" && computerSelection === "Rock") {
-        console.log ("Great choice! Paper covers Rock! You won!");
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        console.log ("Great choice! Paper covers Rock! You won the round!");
         playersWins = playersWins + 1;
     } else if (playerSelection === computerSelection) {
-        console.log("Two heads thinking alike. It's a tie.");
+        console.log("Two heads thinking alike. It's a tied round.");
     }
 }
 
@@ -35,21 +37,21 @@ alert("Hello! Let's have some fun! This is a simple game of 'Rock', 'Paper' or '
 function game() {
     for (let i = 1; i <= 5; i++) {
         computerSelection = computerPlay();
-        let answer = prompt("What's your choice? 'Rock', 'Paper' or 'Scissor'?");
-        let playerAnswer = answer.toLowerCase().trim();
-        if (playerAnswer === "rock" || playerAnswer === "paper" || playerAnswer === "scissor") {
+        let answerPrompt = prompt("What's your choice? 'Rock', 'Paper' or 'Scissor'?");
+        let playerSelection = answerPrompt.toLowerCase().trim();
+        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissor") {
             playRound(playerSelection, computerSelection);
-            if (playersWins === 3) {
-                console.log("You won 3 matches first!! Congratulations!! Game Over.");
-                break;
-            }
-            if (computersWins === 3) {
-                console.log("You lost 3 matches!! That's what i call a bad luck! Game Over.");
-                break;
-            } else {
-                alert ("That's invalid. Try to choose between 'Rock', 'Paper' or 'Scissor'.")
-            } 
+        } else {
+            alert ("That's invalid. Try to choose between 'Rock', 'Paper' or 'Scissor'.")
+            i--;
         }
     }
+    if (playersWins > computersWins){
+        alert("You WON the game! Congratulations!!") || console.log("You WON the game! Congratulations!!");
+    } else if (playersWins < computersWins){
+        alert("Computer WON the game! That's what i call a bad luck.") || console.log("Computer WON the game! That's what i call a bad luck.");
+    } else if (playersWins === computersWins){
+        alert("You tied the game!") || console.log("You tied the game!");;
+    }
 }
-
+game();
